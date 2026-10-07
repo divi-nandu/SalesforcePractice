@@ -1,0 +1,55 @@
+<template>
+
+    <section class="trending-section">
+
+        <div class="section-header">
+
+            <div>
+                <p class="section-label">TRENDING NOW</p>
+                <h2>Popular Picks</h2>
+            </div>
+
+            <p class="section-description">
+                Stories worth watching right now.
+            </p>
+
+        </div>
+
+        <div class="movie-grid">
+
+            <template for:each={movies} for:item="movie">
+
+                <div class="movie-card" key={movie.id}>
+
+                    <div class="movie-poster">
+
+                        <img
+                            src={movie.image}
+                            alt={movie.title}
+                        />
+
+                        <span class="rating">
+                            ★ {movie.rating}
+                        </span>
+
+                    </div>
+
+                    <div class="movie-info">
+
+                        <h3>{movie.title}</h3>
+
+                        <p>
+                            {movie.year} • {movie.genre}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </template>
+
+        </div>
+
+    </section>
+
+</template>

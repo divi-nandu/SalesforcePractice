@@ -1,0 +1,41 @@
+<template>
+
+    <section class="mood-section">
+
+        <p class="section-label">EXPLORE BY MOOD</p>
+
+        <h2>What are you in the mood for?</h2>
+
+        <div class="mood-grid">
+
+            <template for:each={moods} for:item="mood">
+
+                <button
+                    key={mood.id}
+                    class="mood-button"
+                    data-mood={mood.name}
+                    onclick={handleMood}>
+
+                    <span class="mood-emoji">
+                        {mood.emoji}
+                    </span>
+
+                    <span>
+                        {mood.name}
+                    </span>
+
+                </button>
+
+            </template>
+
+        </div>
+
+        <button
+            class="clear-button"
+            onclick={handleClear}>
+            Clear Selection
+        </button>
+
+    </section>
+
+</template>

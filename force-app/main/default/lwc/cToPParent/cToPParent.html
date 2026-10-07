@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Child to Parent Communication">
+        <div class="slds-m-around_medium">
+
+            <div onclick={handleParentClick}>
+
+                <lightning-button
+                    label="Open Modal"
+                    onclick={handleOpen}>
+                </lightning-button>
+
+                <p>{message}</p>
+
+                <template lwc:if={showModal}>
+                    <c-c-to-p-modal
+                        onclose={closeHandler}>
+                    </c-c-to-p-modal>
+                </template>
+
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

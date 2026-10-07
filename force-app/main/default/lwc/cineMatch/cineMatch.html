@@ -1,0 +1,41 @@
+<template>
+    <div class="cine-match">
+
+        <!-- Hero Banner -->
+        <section
+            class="hero-banner"
+            style={heroStyle}>
+
+            <div class="hero-content">
+
+                <p class="hero-label">CINEMATCH</p>
+
+                <h1>Find Your Next Favorite</h1>
+
+                <p class="hero-description">
+                    Discover movies and series based on your mood,
+                    interests and taste.
+                </p>
+
+                <button
+                    class="explore-button"
+                    onclick={handleExplore}>
+                    🎬 Find My Movies
+                </button>
+
+            </div>
+
+        </section>
+
+        <c-trending-movies></c-trending-movies>
+
+        <c-mood-categories
+    onmoodselect={handleMoodSelect}>
+</c-mood-categories>
+
+<c-movie-results
+    selected-mood={selectedMood}>
+</c-movie-results>
+
+    </div>
+</template>

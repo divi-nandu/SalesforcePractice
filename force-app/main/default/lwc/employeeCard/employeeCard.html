@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Employee Details">
+
+        <div class="slds-m-around_medium">
+
+            <h1>{fullName}</h1>
+            <p>Age: {age}</p>
+            <p>Employee: {isEmployee}</p>
+            <p>Department: {details.department}</p>
+            <p>Location: {details.location}</p>
+
+            <lightning-input
+    label="Location"
+    onkeyup={changeLocation}>
+</lightning-input>
+
+            <p>Title: {title}</p>
+
+            <lightning-input
+                label="Course Name"
+                onkeyup={changeHandler}>
+            </lightning-input>
+
+        </div>
+
+    </lightning-card>
+</template>

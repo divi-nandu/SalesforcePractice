@@ -1,0 +1,9 @@
+.barWrapper {
+    width: 100%;
+}
+
+.bar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+}

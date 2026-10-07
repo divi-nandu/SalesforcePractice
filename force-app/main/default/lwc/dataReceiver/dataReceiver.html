@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Child Component">
+        <div class="slds-m-around_medium">
+            <p>Message: {message}</p>
+            <p>Number: {number}</p>
+            <p>Is Valid: {isValid}</p>
+            <p>Name: {student.name}</p>
+<p>Course: {student.course}</p>
+<p>Experience: {student.experience}</p>
+
+<template for:each={names} for:item="name">
+    <p key={name}>{name}</p>
+</template>
+
+
+<p>TEST EMPLOYEES</p>
+
+
+<template for:each={employeeList} for:item="employee">
+    <p key={employee.name}>
+        {employee.name} - {employee.role}
+    </p>
+</template>
+        </div>
+    </lightning-card>
+</template>

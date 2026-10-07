@@ -1,0 +1,6 @@
+@import 'c/sharedCss';
+
+.barOne {
+    width: 80%;
+    background: #296f3f;
+}

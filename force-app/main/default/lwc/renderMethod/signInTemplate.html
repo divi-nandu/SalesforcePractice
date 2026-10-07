@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Sign In">
+        <div class="slds-m-around_medium">
+
+            <h2>Sign In Form</h2>
+
+            <lightning-input
+                type="email"
+                label="Email Address">
+            </lightning-input>
+
+            <lightning-input
+                type="password"
+                label="Password">
+            </lightning-input>
+
+            <lightning-button
+                label="Sign In"
+                variant="success">
+            </lightning-button>
+
+            <lightning-button
+                label="Back"
+                variant="neutral"
+                onclick={handleBack}
+                class="slds-m-left_x-small">
+            </lightning-button>
+
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Iterator">
+
+        <div class="slds-m-around_medium">
+
+            <template iterator:car={cars}>
+
+                <template if:true={car.first}>
+                    <p key={car.value}>
+                        This is the first car.
+                    </p>
+                </template>
+
+                
+                <p key={car.value}>
+                    {car.index} - {car.value}
+                </p>
+
+
+                <template if:true={car.last}>
+                    <p key={car.value}>
+                        This is the last car.
+                    </p>
+                </template>
+
+            </template>
+
+        </div>
+
+    </lightning-card>
+</template>

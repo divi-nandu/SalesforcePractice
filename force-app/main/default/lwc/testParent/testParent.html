@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Test Parent">
+
+        <div class="slds-var-m-around_medium">
+
+            <lightning-button
+                label="Show Child"
+                onclick={showChild}>
+            </lightning-button>
+
+            <lightning-button
+                label="Remove Child"
+                onclick={removeChild}
+                class="slds-var-m-left_small">
+            </lightning-button>
+
+            <template if:true={isChildVisible}>
+                <c-test-child></c-test-child>
+            </template>
+
+        </div>
+
+    </lightning-card>
+</template>

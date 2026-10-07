@@ -1,0 +1,31 @@
+<aura:component implements="flexipage:availableForAllPageTypes"
+                access="global">
+
+    <!-- Local state -->
+    <aura:attribute name="messageValue"    type="String"/>
+    <aura:attribute name="messageReceived" type="String"/>
+
+    <!-- LMS handle -->
+    <lightning:messageChannel aura:id="smc"
+                              type="SampleMessageChannel__c"
+                              scope="APPLICATION"
+                              onMessage="{!c.handleMessage}"/>
+
+    <!-- UI -->
+    <lightning:card title="Aura Messenger">
+        <div class="slds-p-horizontal_medium">
+            <lightning:input label="Message to publish"
+                             value="{!v.messageValue}"
+                             onchange="{!c.inputHandler}"/>
+            <lightning:button label="Publish"
+                              variant="brand"
+                              onclick="{!c.publishMessage}"
+                              class="slds-m-top_small"/>
+        </div>
+
+        <div class="slds-p-horizontal_medium slds-m-top_medium">
+            <h2><strong>Message received:</strong></h2>
+            <lightning:formattedText value="{!v.messageReceived}"/>
+        </div>
+    </lightning:card>
+</aura:component>

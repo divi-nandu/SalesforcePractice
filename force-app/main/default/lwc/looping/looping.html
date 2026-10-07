@@ -1,0 +1,30 @@
+<template>
+
+    <lightning-card title="For Each Loop">
+
+        <div class="slds-m-around_medium">
+
+            <!-- Cars -->
+            <h2>Cars</h2>
+
+            <template for:each={cars} for:item="car" for:index="index">
+                <p key={car}>{index} - {car}</p>
+            </template>
+
+
+            <!-- Employees -->
+            <h2>Employees</h2>
+
+            <template for:each={employees} for:item="employee">
+
+                <p key={employee.id}>
+                    {employee.name} - {employee.department}
+                </p>
+
+            </template>
+
+        </div>
+
+    </lightning-card>
+
+</template>

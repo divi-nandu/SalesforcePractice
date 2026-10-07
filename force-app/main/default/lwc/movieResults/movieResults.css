@@ -1,0 +1,97 @@
+.results-section {
+    padding: 50px 60px;
+    background: #0b0b0f;
+    color: white;
+}
+
+.section-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 0 0 25px;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.result-card {
+    background: #17171d;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.result-poster {
+    height: 300px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.result-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.result-info {
+    padding: 15px;
+}
+
+.result-info h3 {
+    margin: 0 0 8px;
+}
+
+.result-info p {
+    color: #999;
+    margin: 0;
+}
+
+.empty-message {
+    color: #999;
+    padding: 20px 0;
+}
+
+.details-button {
+    margin-top: 12px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background: white;
+    color: #111;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.details-button:hover {
+    transform: translateY(-2px);
+}
+
+.movie-details {
+    margin-top: 30px;
+    padding: 20px;
+    background: #17171d;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.movie-details h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+.movie-details p {
+    margin: 6px 0;
+    color: #aaa;
+}

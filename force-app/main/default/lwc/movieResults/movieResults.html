@@ -1,0 +1,97 @@
+<template>
+
+    <section class="results-section">
+
+        <p class="section-label">YOUR PICKS</p>
+
+        <h2>Recommended For You</h2>
+
+        <template if:true={hasRecommendations}>
+
+            <div class="results-grid">
+
+                <template
+                    for:each={recommendedMovies}
+                    for:item="movie">
+
+                    <div
+                        class="result-card"
+                        key={movie.id}>
+
+                        <div class="result-poster">
+
+                            <img
+                                src={movie.image}
+                                alt={movie.title}
+                            />
+
+                        </div>
+
+                        <div class="result-info">
+
+                            <h3>{movie.title}</h3>
+
+                            <p>
+                                {movie.year} • ★ {movie.rating}
+                            </p>
+
+                            <p class="ott-info">
+                                📺 {movie.ott}
+                            </p>
+
+                            <button
+                                class="details-button"
+                                data-id={movie.id}
+                                onclick={handleViewDetails}>
+                                View Details
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+        </template>
+
+        <template if:false={hasRecommendations}>
+
+            <p class="empty-message">
+                Choose a mood above to discover movies made for you.
+            </p>
+
+        </template>
+
+
+
+        <template if:true={selectedMovie}>
+
+            <div class="movie-details">
+
+                <h2>{selectedMovie.title}</h2>
+
+                <p class="description">
+                    {selectedMovie.description}
+                </p>
+
+                <p>
+                    {selectedMovie.year} • {selectedMovie.genre}
+                </p>
+
+                <p>
+                    ⭐ {selectedMovie.rating}
+                </p>
+
+                <p>
+                    📺 {selectedMovie.ott}
+                </p>
+
+            </div>
+
+        </template>
+
+    </section>
+
+</template>

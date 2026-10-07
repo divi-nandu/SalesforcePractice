@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Parent Component">
+        <div class="slds-m-around_medium">
+
+            <p>Parent Employees: {employeeList}</p>
+
+            <c-data-receiver
+                message="Hello from Parent"
+                number="20"
+                is-valid
+                student={student}
+                names={names}
+                employee-list={employeeList}>
+            </c-data-receiver>
+
+            <lightning-input
+                type="number"
+                label="Enter Percentage"
+                value={percentage}
+                onchange={handleChange}>
+            </lightning-input>
+
+            <c-p2c-progress
+                progress-value={percentage}>
+            </c-p2c-progress>
+
+            <c-data-carousel
+                carousel-details={carouselData}>
+            </c-data-carousel>
+
+            <lightning-button
+    label="Reset Slider"
+    variant="brand"
+    onclick={handleReset}>
+</lightning-button>
+
+<c-p2c-slider></c-p2c-slider>
+
+            <c-p2c-slider></c-p2c-slider>
+
+        </div>
+    </lightning-card>
+</template>

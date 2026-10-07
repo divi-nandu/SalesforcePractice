@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="LWC Messenger">
+        <div class="slds-p-horizontal_medium">
+            <lightning-input label="Message to publish"
+                             value={messageValue}
+                             onchange={handleInput}>
+            </lightning-input>
+
+            <lightning-button label="Publish"
+                              variant="brand"
+                              onclick={publishMessage}
+                              class="slds-m-top_small">
+            </lightning-button>
+        </div>
+
+        <div class="slds-p-horizontal_medium slds-m-top_medium">
+            <h2><strong>Message received:</strong></h2>
+            <lightning-formatted-text value={messageReceived}></lightning-formatted-text>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,26 @@
+<template>
+
+    <lightning-input
+    type="text"
+    label="Type Hello"
+    onkeyup={changeHandler}>
+</lightning-input>
+<template if:true={helloMethod}>
+    <p>Hooray! You have typed correctly.</p>
+</template>
+
+    <lightning-button
+        label="Show Data"
+        variant="brand"
+        onclick={handleClick}>
+    </lightning-button>
+
+    <template if:true={isVisible}>
+        <p>Welcome to Salesforce!</p>
+    </template>
+
+    <template if:false={isVisible}>
+    <p>Please click the button to show the data.</p>
+</template>
+
+</template>

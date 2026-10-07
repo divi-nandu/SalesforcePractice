@@ -1,0 +1,6 @@
+@import 'c/sharedCss';
+
+.barTwo {
+    width: 90%;
+    background: #296f3f;
+}

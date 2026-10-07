@@ -1,0 +1,5 @@
+@import 'c/sharedCss';
+
+.bar {
+    background-color: #0176d3;
+}

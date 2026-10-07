@@ -1,0 +1,58 @@
+.cine-match {
+    min-height: 100vh;
+    background: #0b0b0f;
+    color: white;
+}
+
+/* Hero Banner */
+
+.hero-banner {
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+
+    padding: 60px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-label {
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    margin: 0 0 15px;
+}
+
+.hero-description {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #dddddd;
+}
+
+.explore-button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #ffffff;
+    color: #111111;
+}
+
+.explore-button:hover {
+    transform: translateY(-2px);
+}
