@@ -1,59 +1,58 @@
-<apex:page lightningStylesheets="true">
-    <div class="slds-scope">
-        <div class="slds-p-around_small">
-            <!-- Input -->
-            <label class="slds-form-element__label" for="msgInput">
-                Message to publish
-            </label>
-            <input id="msgInput" type="text" class="slds-input slds-m-bottom_small"/>
-
-            <!-- Buttons -->
-            <div class="slds-m-bottom_small">
-                <button class="slds-button slds-button_neutral" onclick="publishHandler()">Publish</button>
-                <button class="slds-button slds-button_neutral" onclick="subscribeHandler()">Subscribe</button>
-                <button class="slds-button slds-button_neutral" onclick="unsubscribeHandler()">Unsubscribe</button>
-            </div>
-
-            <!-- Display -->
-            <p><strong>Message received:</strong></p>
-            <div id="msgDisplay" class="slds-text-heading_medium"></div>
-        </div>
+<apex:page>
+    <div style="padding: 10px; font-family: Arial, sans-serif;">
+        <label for="messageInput">Message to publish</label><br/>
+        <input type="text" id="messageInput" style="width: 100%; padding: 6px; margin: 6px 0;" /><br/>
+        
+        <button onclick="publishMessage()" style="padding: 6px 12px; margin-right: 5px; cursor: pointer;">Publish</button>
+        <button onclick="subscribeMC()" style="padding: 6px 12px; margin-right: 5px; cursor: pointer;">Subscribe</button>
+        <button onclick="unsubscribeMC()" style="padding: 6px 12px; cursor: pointer;">Unsubscribe</button>
+        
+        <p style="margin-top: 15px; font-weight: bold;">
+            Message received: <span id="receivedMessage" style="font-weight: normal; color: #0176d3;"></span>
+        </p>
     </div>
 
     <script>
-        // 1. Channel reference
-        let SAMPLEMC = "{!$MessageChannel.SampleMessageChannel__c}";
-        let subscriptionToMC;
+        // 1. Reference the Message Channel
+        let SAMPLE_MC = "{!$MessageChannel.SampleMessageChannel__c}";
+        let subscriptionToMC = null;
 
-        // 2. Publish function
-        function publishHandler() {
-            let data = document.getElementById("msgInput").value;
-            let message = {
+        // 2. Publish a message from Visualforce
+        function publishMessage() {
+            let inputVal = document.getElementById("messageInput").value;
+            let payload = {
                 lmsData: {
-                    value: data
+                    value: inputVal
                 }
             };
-            sforce.one.publish(SAMPLEMC, message);
+            sforce.one.publish(SAMPLE_MC, payload);
         }
 
-        // 3. Subscribe function
-        function subscribeHandler() {
+        // 3. Subscribe to the channel
+        function subscribeMC() {
             if (!subscriptionToMC) {
-                subscriptionToMC = sforce.one.subscribe(SAMPLEMC, messageHandler, { scope: "APPLICATION" });
+                subscriptionToMC = sforce.one.subscribe(SAMPLE_MC, onMessageCallback);
+                console.log("Subscribed successfully to LMS in Visualforce");
             }
         }
 
-        // 4. Message receiver function
-        function messageHandler(message) {
-            let displayDiv = document.getElementById("msgDisplay");
-            displayDiv.innerHTML = (message && message.lmsData) ? message.lmsData.value : "No data sent";
+        // 4. Handle incoming message from LWC / Aura
+        function onMessageCallback(message) {
+            console.log("Visualforce received message:", message);
+            // Check if message and lmsData exist safely
+            if (message && message.lmsData) {
+                document.getElementById("receivedMessage").innerText = message.lmsData.value;
+            } else if (message && message.value) {
+                document.getElementById("receivedMessage").innerText = message.value;
+            }
         }
 
-        // 5. Unsubscribe function
-        function unsubscribeHandler() {
+        // 5. Unsubscribe from the channel
+        function unsubscribeMC() {
             if (subscriptionToMC) {
                 sforce.one.unsubscribe(subscriptionToMC);
                 subscriptionToMC = null;
+                console.log("Unsubscribed successfully in Visualforce");
             }
         }
     </script>
