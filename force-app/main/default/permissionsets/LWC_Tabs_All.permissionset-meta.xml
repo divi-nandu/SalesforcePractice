@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>LWC Tabs All</label>
+    <hasActivationRequired>false</hasActivationRequired>
+    <tabSettings><tab>Memory_Game_LWC</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>LWC_Learning</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>Components_Communication</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>Setter</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>Styling_Practice</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>CineMatch</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>CheckPermissionDemo</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>customlabels</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>internationalzation</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>navigation</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>staticimage</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>reusablecomponent</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>auracoexistance</tab><visibility>Visible</visibility></tabSettings>
+</PermissionSet>
