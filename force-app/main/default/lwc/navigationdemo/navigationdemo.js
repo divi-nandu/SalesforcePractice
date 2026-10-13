@@ -1,90 +1,62 @@
-
 import { LightningElement } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 import { encodeDefaultFieldValues } from 'lightning/pageReferenceUtils';
 
 export default class NavigationDemo extends NavigationMixin(LightningElement) {
 
-    // Replace this placeholder with an actual Contact record ID
-    contactRecordId = '003XXXXXXXXXXXXXXX';
+    // Replace these with real record IDs from your dev org
+    contactRecordId = '003ak00002GXaqTAAT';
+    accountRecordId = '001XXXXXXXXXXXXXXX';
 
-    // 1. Navigate to Home
     navigateToHome() {
         this[NavigationMixin.Navigate]({
             type: 'standard__namedPage',
-            attributes: {
-                pageName: 'home'
-            }
+            attributes: { pageName: 'home' }
         });
     }
 
-    // 2. Navigate to Chatter
     navigateToChatter() {
         this[NavigationMixin.Navigate]({
             type: 'standard__namedPage',
-            attributes: {
-                pageName: 'chatter'
-            }
+            attributes: { pageName: 'chatter' }
         });
     }
 
-    // 3. Navigate to a new Contact record
     navigateToNewRecord() {
         this[NavigationMixin.Navigate]({
             type: 'standard__objectPage',
-            attributes: {
-                objectApiName: 'Contact',
-                actionName: 'new'
-            }
+            attributes: { objectApiName: 'Contact', actionName: 'new' }
         });
     }
 
-    // 4. Navigate to a new Contact with default values
     navigateToNewRecordWithDefault() {
         const defaultValues = encodeDefaultFieldValues({
             FirstName: 'Zero',
             LastName: 'Zero',
             LeadSource: 'Other'
         });
-
         this[NavigationMixin.Navigate]({
             type: 'standard__objectPage',
-            attributes: {
-                objectApiName: 'Contact',
-                actionName: 'new'
-            },
-            state: {
-                defaultFieldValues: defaultValues
-            }
+            attributes: { objectApiName: 'Contact', actionName: 'new' },
+            state: { defaultFieldValues: defaultValues }
         });
     }
 
-    // 5. Navigate to the Contact list view
     navigateToListView() {
         this[NavigationMixin.Navigate]({
             type: 'standard__objectPage',
-            attributes: {
-                objectApiName: 'Contact',
-                actionName: 'list'
-            },
-            state: {
-                filterName: 'Recent'
-            }
+            attributes: { objectApiName: 'Contact', actionName: 'list' },
+            state: { filterName: 'Recent' }
         });
     }
 
-    // 6. Navigate to Files
     navigateToFiles() {
         this[NavigationMixin.Navigate]({
             type: 'standard__objectPage',
-            attributes: {
-                objectApiName: 'ContentDocument',
-                actionName: 'home'
-            }
+            attributes: { objectApiName: 'ContentDocument', actionName: 'home' }
         });
     }
 
-    // 7. Navigate to Contact record in View Mode
     navigateToRecordViewMode() {
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
@@ -96,7 +68,6 @@ export default class NavigationDemo extends NavigationMixin(LightningElement) {
         });
     }
 
-    // 8. Navigate to Contact record in Edit Mode
     navigateToRecordEditMode() {
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
@@ -107,37 +78,68 @@ export default class NavigationDemo extends NavigationMixin(LightningElement) {
             }
         });
     }
-    // 9. Navigate to a Salesforce Tab
-navigateToTab() {
-    this[NavigationMixin.Navigate]({
-        type: 'standard__navItemPage',
-        attributes: {
-            apiName: 'lightning_in_WC'
-        }
-    });
-}
-// 10. Navigate to Related Contacts of an Account
-accountRecordId = '001XXXXXXXXXXXXXXX';
 
-navigateToRelatedList() {
+    navigateToTab() {
+        this[NavigationMixin.Navigate]({
+            type: 'standard__navItemPage',
+            attributes: { apiName: 'lightning_in_WC' }
+        });
+    }
+
+    navigateToRelatedList() {
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordRelationshipPage',
+            attributes: {
+                recordId: this.accountRecordId,
+                objectApiName: 'Account',
+                relationshipApiName: 'Contacts',
+                actionName: 'view'
+            }
+        });
+    }
+
+    navigateToWebPage() {
+        this[NavigationMixin.Navigate]({
+            type: 'standard__webPage',
+            attributes: { url: 'https://www.salesforce.com' }
+        });
+    }
+
+    // Sends the real Contact ID to the target component
+    navigateToLWC() {
+        const definition = {
+            componentDef: 'c:navigationlwctarget',
+            attributes: { recordId: this.contactRecordId }
+        };
+        this[NavigationMixin.Navigate]({
+            type: 'standard__webPage',
+            attributes: {
+                url: '/one/one.app#' + btoa(JSON.stringify(definition))
+            }
+        });
+    }
+
+    navigateToAura() {
     this[NavigationMixin.Navigate]({
-        type: 'standard__recordRelationshipPage',
+        type: 'standard__component',
         attributes: {
-            recordId: this.accountRecordId,
-            objectApiName: 'Account',
-            relationshipApiName: 'Contacts',
-            actionName: 'view'
+            componentName: 'c__auraNavigation'
+        },
+        state: {
+            c__id: this.contactRecordId
         }
     });
 }
-// 11. Navigate to an External Web Page
-navigateToWebPage() {
-    this[NavigationMixin.Navigate]({
+
+navigateToVisualforce() {
+    this[NavigationMixin.GenerateUrl]({
         type: 'standard__webPage',
         attributes: {
-            url: 'https://www.salesforce.com'
+            url: '/apex/navigate_Page'
         }
+    }).then(generatedUrl => {
+        console.log('Generated URL:', generatedUrl);
+        window.open(generatedUrl, '_blank');
     });
 }
-
 }

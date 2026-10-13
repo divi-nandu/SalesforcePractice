@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Navigate Target">
+        <div class="slds-p-around_medium">
+            <p>Record ID: {recordId}</p>
+
+            <template lwc:if={contact.data}>
+                <p>Contact name: {firstName} {lastName}</p>
+            </template>
+
+            <template lwc:if={contact.error}>
+                <p class="slds-text-color_error">Could not load the Contact. Check that the ID is a valid Contact ID.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

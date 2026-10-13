@@ -1,0 +1,53 @@
+<template>
+    <!-- Card 1: Create -->
+    <lightning-card title="1. Create a record">
+        <lightning-record-form
+            object-api-name={objectName}
+            fields={fieldList}
+            onsuccess={handleSuccess}>
+        </lightning-record-form>
+    </lightning-card>
+
+    <template lwc:if={accountId}>
+        <!-- Card 2: View (default mode) -->
+        <lightning-card title="2. View a record">
+            <lightning-record-form
+                object-api-name={objectName}
+                record-id={accountId}
+                fields={fieldList}>
+            </lightning-record-form>
+        </lightning-card>
+
+        <!-- Card 3: Read-only -->
+        <lightning-card title="3. Read-only mode">
+            <lightning-record-form
+                object-api-name={objectName}
+                record-id={accountId}
+                fields={fieldList}
+                mode="readonly">
+            </lightning-record-form>
+        </lightning-card>
+
+        <!-- Card 4: Edit mode, 2 columns -->
+        <lightning-card title="4. Edit mode with 2 columns">
+            <lightning-record-form
+                object-api-name={objectName}
+                record-id={accountId}
+                fields={fieldList}
+                mode="edit"
+                columns="2">
+            </lightning-record-form>
+        </lightning-card>
+
+        <!-- Card 5: Layout type instead of fields -->
+        <lightning-card title="5. Using layout-type (Full)">
+            <lightning-record-form
+                object-api-name={objectName}
+                record-id={accountId}
+                layout-type="Full"
+                mode="edit"
+                columns="2">
+            </lightning-record-form>
+        </lightning-card>
+    </template>
+</template>

@@ -1,103 +1,47 @@
-
 <template>
     <lightning-card title="Salesforce Navigation Demo">
         <div class="slds-p-around_medium">
 
-            <!-- 1. Navigate to Home -->
-            <lightning-button
-                label="Navigate to Home"
-                variant="brand"
-                onclick={navigateToHome}>
-            </lightning-button>
+            <lightning-button label="Navigate to Home" variant="brand" onclick={navigateToHome}></lightning-button>
 
-            <!-- 2. Navigate to Chatter -->
             <div class="slds-m-top_medium">
-                <lightning-button
-                    label="Navigate to Chatter"
-                    variant="brand"
-                    onclick={navigateToChatter}>
-                </lightning-button>
+                <lightning-button label="Navigate to Chatter" variant="brand" onclick={navigateToChatter}></lightning-button>
             </div>
-
-            <!-- 3. Navigate to New Record -->
             <div class="slds-m-top_medium">
-                <lightning-button
-                    label="New Record"
-                    variant="brand"
-                    onclick={navigateToNewRecord}>
-                </lightning-button>
+                <lightning-button label="New Record" variant="brand" onclick={navigateToNewRecord}></lightning-button>
             </div>
-
-            <!-- 4. New Record with Default Values -->
             <div class="slds-m-top_medium">
-                <lightning-button
-                    label="New Record with Default Values"
-                    variant="brand"
-                    onclick={navigateToNewRecordWithDefault}>
-                </lightning-button>
+                <lightning-button label="New Record with Default Values" variant="brand" onclick={navigateToNewRecordWithDefault}></lightning-button>
             </div>
-
-            <!-- 5. Navigate to List View -->
             <div class="slds-m-top_medium">
-                <lightning-button
-                    label="Navigate to List View"
-                    variant="brand"
-                    onclick={navigateToListView}>
-                </lightning-button>
+                <lightning-button label="Navigate to List View" variant="brand" onclick={navigateToListView}></lightning-button>
             </div>
-
-            <!-- 6. Navigate to Files -->
             <div class="slds-m-top_medium">
-                <lightning-button
-                    label="Navigate to Files"
-                    variant="brand"
-                    onclick={navigateToFiles}>
-                </lightning-button>
+                <lightning-button label="Navigate to Files" variant="brand" onclick={navigateToFiles}></lightning-button>
             </div>
-
-            <!-- 7. Navigate to Record in View Mode -->
             <div class="slds-m-top_medium">
-                <lightning-button
-                    label="Record View Mode"
-                    variant="brand"
-                    onclick={navigateToRecordViewMode}>
-                </lightning-button>
+                <lightning-button label="Record View Mode" variant="brand" onclick={navigateToRecordViewMode}></lightning-button>
             </div>
-
-            <!-- 8. Navigate to Record in Edit Mode -->
             <div class="slds-m-top_medium">
-                <lightning-button
-                    label="Record Edit Mode"
-                    variant="brand"
-                    onclick={navigateToRecordEditMode}>
-                </lightning-button>
+                <lightning-button label="Record Edit Mode" variant="brand" onclick={navigateToRecordEditMode}></lightning-button>
             </div>
-
-            <!-- 9. Navigate to a Tab -->
-<div class="slds-m-top_medium">
-    <lightning-button
-        label="Navigate to Tab"
-        variant="brand"
-        onclick={navigateToTab}>
-    </lightning-button>
+            <div class="slds-m-top_medium">
+                <lightning-button label="Navigate to Tab" variant="brand" onclick={navigateToTab}></lightning-button>
+            </div>
+            <div class="slds-m-top_medium">
+                <lightning-button label="Navigate to Related Contacts" variant="brand" onclick={navigateToRelatedList}></lightning-button>
+            </div>
+            <div class="slds-m-top_medium">
+                <lightning-button label="Navigate to Web Page" variant="brand" onclick={navigateToWebPage}></lightning-button>
+            </div>
+            <div class="slds-m-top_medium">
+                <lightning-button label="Navigate to LWC" variant="brand" onclick={navigateToLWC}></lightning-button>
+            </div>
+            <div class="slds-m-top_medium">
+    <lightning-button label="Navigate to Aura" variant="brand" onclick={navigateToAura}></lightning-button>
 </div>
-
-<!-- 10. Navigate to Related Contacts -->
 <div class="slds-m-top_medium">
-    <lightning-button
-        label="Navigate to Related Contacts"
-        variant="brand"
-        onclick={navigateToRelatedList}>
-    </lightning-button>
-</div>
-
-<!-- 11. Navigate to an External Web Page -->
-<div class="slds-m-top_medium">
-    <lightning-button
-        label="Navigate to Web Page"
-        variant="brand"
-        onclick={navigateToWebPage}>
-    </lightning-button>
+    <lightning-button label="Navigate to Visualforce" variant="brand" onclick={navigateToVisualforce}></lightning-button>
 </div>
 
         </div>
