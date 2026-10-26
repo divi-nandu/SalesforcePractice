@@ -1,0 +1,36 @@
+
+<template>
+    <lightning-card title="Contact CSV Export">
+        <div class="slds-p-around_medium">
+
+            <template lwc:if={contacts}>
+                <p class="slds-m-bottom_small">
+                    Records loaded: {contacts.length}
+                </p>
+
+                <div class="slds-m-bottom_medium download-container">
+                    <lightning-button
+                        label="Download CSV"
+                        variant="brand"
+                        onclick={handleDownload}
+                        disabled={isDownloadDisabled}>
+                    </lightning-button>
+                </div>
+
+                <lightning-datatable
+                    key-field="Id"
+                    data={contacts}
+                    columns={columns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+
+            <template lwc:if={errorMessage}>
+                <p class="slds-text-color_error slds-m-top_medium">
+                    {errorMessage}
+                </p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

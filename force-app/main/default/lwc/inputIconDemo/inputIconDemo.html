@@ -1,0 +1,45 @@
+<template>
+    <lightning-card title="Login Form">
+        <div class="slds-p-around_medium">
+
+            <div class="slds-m-bottom_medium">
+                <lightning-icon
+                    icon-name="utility:user"
+                    size="small"
+                    alternative-text="User">
+                </lightning-icon>
+
+                <lightning-input
+                    label="Username"
+                    type="text"
+                    placeholder="Enter username"
+                    value={username}
+                    onchange={handleUsernameChange}>
+                </lightning-input>
+            </div>
+
+            <div class="slds-m-bottom_medium">
+                <lightning-icon
+                    icon-name="utility:lock"
+                    size="small"
+                    alternative-text="Lock">
+                </lightning-icon>
+
+                <lightning-input
+                    label="Password"
+                    type={passwordType}
+                    placeholder="Enter password"
+                    value={password}
+                    onchange={handlePasswordChange}>
+                </lightning-input>
+
+                <lightning-button
+                    label={toggleLabel}
+                    icon-name={toggleIcon}
+                    onclick={togglePassword}>
+                </lightning-button>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

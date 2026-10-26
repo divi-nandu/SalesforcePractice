@@ -1,0 +1,56 @@
+
+<template>
+    <h3 class="slds-text-heading_small slds-var-m-bottom_x-small">
+        Open cases
+    </h3>
+
+    <template lwc:if={hasCases}>
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_fixed-layout">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th>Case</th>
+                    <th>Subject</th>
+                    <th>Priority</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <template for:each={rows} for:item="row">
+                    <tr
+                        key={row.id}
+                        data-id={row.id}
+                        class={row.rowClass}
+                        onclick={handleRowClick}
+                    >
+                        <td>{row.number}</td>
+                        <td class="slds-truncate" title={row.subject}>
+                            {row.subject}
+                        </td>
+                        <td>{row.priority}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </template>
+
+    <template lwc:else>
+        <p class="slds-text-color_weak">No open cases.</p>
+    </template>
+
+    
+<div class="slds-var-m-top_small">
+    <lightning-button
+        label="Previous"
+        onclick={handlePrevious}
+        disabled={disablePrevious}
+    ></lightning-button>
+
+    <lightning-button
+        label="Next"
+        class="slds-var-m-left_small"
+        onclick={handleNext}
+        disabled={disableNext}
+    ></lightning-button>
+</div>
+
+</template>

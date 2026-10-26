@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Company Employee Hierarchy">
+        <div class="slds-p-around_medium">
+            <lightning-tree-grid
+                key-field="name"
+                columns={columns}
+                data={gridData}
+                hide-checkbox-column>
+            </lightning-tree-grid>
+        </div>
+    </lightning-card>
+</template>

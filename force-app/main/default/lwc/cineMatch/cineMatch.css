@@ -1,58 +1,318 @@
-.cine-match {
-    min-height: 100vh;
+
+:host {
+    display: block;
     background: #0b0b0f;
-    color: white;
+    color: #f5f5f7;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Hero Banner */
+.cine-match {
+    min-height: 100vh;
+    overflow: hidden;
+    background: #0b0b0f;
+    color: #f5f5f7;
+}
 
-.hero-banner {
-    min-height: 500px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* Navigation */
 
+.site-header {
+    min-height: 76px;
+    padding: 16px 6%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #101014;
+    border-bottom: 1px solid #25252d;
+}
 
-    padding: 60px;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-icon {
+    font-size: 28px;
+}
+
+.brand-name {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffffff;
+}
+
+.header-tagline {
+    margin: 0;
+    color: #aaaab6;
+    font-size: 13px;
+}
+
+/* Hero banner */
+
+.hero-banner {
+    position: relative;
+    min-height: 490px;
+    display: flex;
+    align-items: center;
+    padding: 70px 8%;
+    background-color: #19191f;
+    background-size: cover;
+    background-position: center 35%;
+    background-repeat: no-repeat;
 }
 
 .hero-content {
-    max-width: 600px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 650px;
 }
 
-.hero-label {
-    font-size: 13px;
+.hero-label,
+.section-eyebrow {
+    margin: 0 0 16px;
+    color: #f5c451;
+    font-size: 11px;
+    font-weight: 800;
     letter-spacing: 3px;
-    margin-bottom: 15px;
-    font-weight: bold;
 }
 
-h1 {
-    font-size: 56px;
-    line-height: 1.1;
-    margin: 0 0 15px;
+.hero-banner h1 {
+    margin: 0 0 20px;
+    color: #ffffff;
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+}
+
+.hero-highlight {
+    display: block;
+    color: #f5c451;
 }
 
 .hero-description {
-    font-size: 17px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: #dddddd;
-}
-
-.explore-button {
-    padding: 14px 28px;
-    border: none;
-    border-radius: 8px;
+    max-width: 510px;
+    margin: 0 0 28px;
+    color: #d0d0d7;
     font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    background: #ffffff;
-    color: #111111;
+    line-height: 1.8;
 }
 
-.explore-button:hover {
+.hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.primary-button,
+.secondary-button {
+    min-height: 46px;
+    padding: 12px 21px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border: 1px solid #f5c451;
+    background: #f5c451;
+    color: #151515;
+}
+
+.primary-button:hover {
+    background: #ffda7c;
+    border-color: #ffda7c;
     transform: translateY(-2px);
+}
+
+.secondary-button {
+    border: 1px solid #777780;
+    background: rgba(20, 20, 25, 0.55);
+    color: #ffffff;
+}
+
+.secondary-button:hover {
+    background: #292930;
+    border-color: #f5c451;
+    transform: translateY(-2px);
+}
+
+.hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+    margin-top: 30px;
+    color: #d1d1d8;
+    font-size: 12px;
+}
+
+.hero-bottom-fade {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    pointer-events: none;
+    background: linear-gradient(
+        transparent,
+        rgba(11, 11, 15, 0.65)
+    );
+}
+
+/* Content sections */
+
+.content-section {
+    padding: 55px 6%;
+    scroll-margin-top: 20px;
+}
+
+.trending-section {
+    background: #0b0b0f;
+}
+
+.mood-section {
+    background: #101014;
+    border-top: 1px solid #222229;
+    border-bottom: 1px solid #222229;
+}
+
+.results-section {
+    background: #0b0b0f;
+}
+
+.section-intro {
+    margin-bottom: 28px;
+}
+
+.section-eyebrow {
+    margin-bottom: 10px;
+    font-size: 10px;
+}
+
+.section-intro h2 {
+    margin: 0 0 10px;
+    color: #ffffff;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 750;
+    line-height: 1.25;
+}
+
+.section-description {
+    margin: 0;
+    color: #a5a5b1;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Footer */
+
+.site-footer {
+    padding: 32px 6%;
+    text-align: center;
+    background: #101014;
+    border-top: 1px solid #25252d;
+}
+
+.footer-brand {
+    margin-bottom: 10px;
+    color: #f5c451;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.site-footer p {
+    margin: 8px 0;
+    color: #aaaab6;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.site-footer .footer-note {
+    color: #747480;
+    font-size: 11px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 600px) {
+    .site-header {
+        min-height: 65px;
+        padding: 14px 5%;
+    }
+
+    .brand-icon {
+        font-size: 24px;
+    }
+
+    .brand-name {
+        font-size: 17px;
+        letter-spacing: 1.5px;
+    }
+
+    .header-tagline {
+        max-width: 115px;
+        text-align: right;
+        font-size: 11px;
+    }
+
+    .hero-banner {
+        min-height: 470px;
+        padding: 54px 6%;
+        background-position: center;
+    }
+
+    .hero-banner h1 {
+        font-size: 39px;
+        letter-spacing: -0.8px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+        min-height: 46px;
+    }
+
+    .hero-features {
+        gap: 12px;
+        line-height: 1.5;
+    }
+
+    .content-section {
+        padding: 38px 5%;
+    }
+
+    .section-intro h2 {
+        font-size: 25px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .primary-button,
+    .secondary-button {
+        transition: none;
+    }
 }

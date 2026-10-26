@@ -1,0 +1,45 @@
+
+<template>
+    <lightning-card title="Event Booking Date Validation">
+        <div class="slds-p-around_medium">
+
+            <lightning-input
+                type="date"
+                label="Start Date"
+                value={startDate}
+                onchange={handleStartDateChange}
+                required>
+            </lightning-input>
+
+            <lightning-input
+                class="slds-m-top_medium"
+                type="date"
+                label="End Date"
+                value={endDate}
+                onchange={handleEndDateChange}
+                required>
+            </lightning-input>
+
+            <div class="slds-m-top_medium">
+                <lightning-button
+                    label="Validate Dates"
+                    variant="brand"
+                    onclick={handleValidate}>
+                </lightning-button>
+            </div>
+
+            <template lwc:if={errorMessage}>
+                <p class="slds-text-color_error slds-m-top_medium">
+                    {errorMessage}
+                </p>
+            </template>
+
+            <template lwc:if={successMessage}>
+                <p class="slds-text-color_success slds-m-top_medium">
+                    {successMessage}
+                </p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

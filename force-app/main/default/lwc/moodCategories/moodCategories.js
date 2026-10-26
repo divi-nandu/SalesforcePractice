@@ -1,45 +1,70 @@
+
 import { LightningElement } from 'lwc';
 
 export default class MoodCategories extends LightningElement {
+    selectedMood = '';
 
-    moods = [
-        { id: 1, name: 'Feel Good', emoji: '😊' },
-        { id: 2, name: 'Emotional', emoji: '😢' },
-        { id: 3, name: 'Thriller', emoji: '😱' },
-        { id: 4, name: 'Action', emoji: '🦸' }
-    ];
+    handleMoodClick(event) {
+        const mood = event.currentTarget.dataset.mood;
 
-    handleMood(event) {
-
-        const buttons = this.template.querySelectorAll('.mood-button');
-
-        buttons.forEach(button => {
-            button.classList.remove('selected');
-        });
-
-        event.currentTarget.classList.add('selected');
-
-        const selectedMood = event.currentTarget.dataset.mood;
+        this.selectedMood = mood;
 
         this.dispatchEvent(
             new CustomEvent('moodselect', {
-                detail: selectedMood
+                detail: mood,
+                bubbles: true,
+                composed: true
             })
         );
     }
 
-    handleClear() {
-
-        const buttons = this.template.querySelectorAll('.mood-button');
-
-        buttons.forEach(button => {
-            button.classList.remove('selected');
-        });
+    handleClearMood() {
+        this.selectedMood = '';
 
         this.dispatchEvent(
             new CustomEvent('moodselect', {
-                detail: ''
+                detail: '',
+                bubbles: true,
+                composed: true
             })
         );
+    }
+
+    get isFeelGoodSelected() {
+        return this.selectedMood === 'Feel Good';
+    }
+
+    get isEmotionalSelected() {
+        return this.selectedMood === 'Emotional';
+    }
+
+    get isThrillerSelected() {
+        return this.selectedMood === 'Thriller';
+    }
+
+    get isActionSelected() {
+        return this.selectedMood === 'Action';
+    }
+
+    get feelGoodClass() {
+        return this.getMoodClass('Feel Good');
+    }
+
+    get emotionalClass() {
+        return this.getMoodClass('Emotional');
+    }
+
+    get thrillerClass() {
+        return this.getMoodClass('Thriller');
+    }
+
+    get actionClass() {
+        return this.getMoodClass('Action');
+    }
+
+    getMoodClass(mood) {
+        return this.selectedMood === mood
+            ? 'mood-card selected'
+            : 'mood-card';
     }
 }

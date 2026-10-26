@@ -1,0 +1,90 @@
+<template>
+    <lightning-tabset>
+
+        <!-- Summary tab: read-only Case details -->
+        <lightning-tab label="Summary">
+            <lightning-record-view-form
+                record-id={recordId}
+                object-api-name="Case">
+
+                <lightning-output-field field-name="Subject"></lightning-output-field>
+                <lightning-output-field field-name="Status"></lightning-output-field>
+                <lightning-output-field field-name="Priority"></lightning-output-field>
+                <lightning-output-field field-name="Origin"></lightning-output-field>
+                <lightning-output-field field-name="Description"></lightning-output-field>
+
+            </lightning-record-view-form>
+        </lightning-tab>
+
+        <!-- Edit tab: update an existing Case -->
+        <lightning-tab label="Edit">
+            <lightning-record-edit-form
+                record-id={recordId}
+                object-api-name="Case"
+                onsuccess={handleSuccess}
+                onerror={handleError}>
+
+                <lightning-messages></lightning-messages>
+
+                <label class="slds-form-element__label">
+                    What is the customer's problem?
+                </label>
+
+                <lightning-input-field
+                    field-name="Subject"
+                    variant="label-hidden">
+                </lightning-input-field>
+
+                <template lwc:if={subjectError}>
+                    <p class="slds-text-color_error slds-var-m-bottom_small">
+                        {subjectError}
+                    </p>
+                </template>
+
+                <lightning-input-field field-name="Status"></lightning-input-field>
+                <lightning-input-field field-name="Priority"></lightning-input-field>
+                <lightning-input-field field-name="Origin"></lightning-input-field>
+
+                <lightning-input-field field-name="Description"></lightning-input-field>
+
+                <template lwc:if={descriptionError}>
+                    <p class="slds-text-color_error slds-var-m-bottom_small">
+                        {descriptionError}
+                    </p>
+                </template>
+
+                <div class="slds-var-m-top_small">
+                    <lightning-button
+                        variant="brand"
+                        label="Save"
+                        onclick={handleSave}>
+                    </lightning-button>
+
+                    <lightning-button
+                        label="Reset"
+                        class="slds-var-m-left_small"
+                        onclick={handleReset}>
+                    </lightning-button>
+                </div>
+
+                <!-- Visible status, so you can see every step -->
+                <p class="slds-var-m-top_small slds-text-color_success">
+                    Status: {statusText}
+                </p>
+
+            </lightning-record-edit-form>
+        </lightning-tab>
+
+        <!-- Quick View tab: compact record display -->
+        <lightning-tab label="Quick view">
+            <lightning-record-form
+                record-id={recordId}
+                object-api-name="Case"
+                layout-type="Compact"
+                columns="2"
+                mode="view">
+            </lightning-record-form>
+        </lightning-tab>
+
+    </lightning-tabset>
+</template>

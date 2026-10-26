@@ -1,0 +1,74 @@
+
+<template>
+    <div class="slds-box">
+        <h3 class="slds-text-heading_small slds-var-m-bottom_small">
+            Create a new case
+        </h3>
+
+        <div class="slds-grid slds-wrap slds-gutters">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                <lightning-input
+                    class="newField"
+                    name="Subject"
+                    label="Subject"
+                    onchange={handleChange}>
+                </lightning-input>
+
+                <lightning-textarea
+                    class="newField"
+                    name="Description"
+                    label="Description"
+                    onchange={handleChange}>
+                </lightning-textarea>
+            </div>
+
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                <lightning-combobox
+                    class="newField"
+                    name="Status"
+                    label="Status"
+                    options={statusOptions}
+                    onchange={handleChange}>
+                </lightning-combobox>
+
+                <lightning-combobox
+                    class="newField"
+                    name="Priority"
+                    label="Priority"
+                    options={priorityOptions}
+                    onchange={handleChange}>
+                </lightning-combobox>
+
+                <lightning-combobox
+                    class="newField"
+                    name="Origin"
+                    label="Origin"
+                    options={originOptions}
+                    onchange={handleChange}>
+                </lightning-combobox>
+
+                <lightning-combobox
+                    class="newField"
+                    name="Type"
+                    label="Type"
+                    options={typeOptions}
+                    onchange={handleChange}>
+                </lightning-combobox>
+            </div>
+        </div>
+
+        <div class="slds-var-m-top_small">
+            <lightning-button
+                variant="brand"
+                label="Create Case"
+                onclick={createCase}>
+            </lightning-button>
+
+            <lightning-button
+                label="Clear"
+                class="slds-var-m-left_small"
+                onclick={clearForm}>
+            </lightning-button>
+        </div>
+    </div>
+</template>

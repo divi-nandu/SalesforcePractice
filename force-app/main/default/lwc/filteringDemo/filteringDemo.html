@@ -1,0 +1,35 @@
+
+<template>
+    <lightning-card title="Filtering Demo">
+        <div class="slds-p-around_medium">
+
+            <lightning-combobox
+                label="Select Department"
+                value={selectedDepartment}
+                options={departmentOptions}
+                onchange={handleDepartmentChange}>
+            </lightning-combobox>
+
+            <div class="slds-m-top_medium">
+                <h2 class="slds-text-heading_medium">
+                    Employee List
+                </h2>
+
+                <template for:each={filteredEmployees} for:item="employee">
+                    <div key={employee.id}
+                         class="slds-box slds-m-top_small">
+                        <p><strong>Name:</strong> {employee.name}</p>
+                        <p><strong>Department:</strong> {employee.department}</p>
+                    </div>
+                </template>
+
+                <template lwc:if={noEmployeesFound}>
+                    <p class="slds-m-top_medium">
+                        No employees found.
+                    </p>
+                </template>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

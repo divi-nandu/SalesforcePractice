@@ -1,0 +1,42 @@
+
+<template>
+    <lightning-card title="Sorting Demo">
+        <div class="slds-p-around_medium">
+
+            <lightning-combobox
+                label="Sort Employees"
+                value={sortOrder}
+                options={sortOptions}
+                onchange={handleSortChange}>
+            </lightning-combobox>
+
+            <div class="slds-m-top_medium">
+                <h2 class="slds-text-heading_medium">
+                    Employee List
+                </h2>
+
+                <template
+                    for:each={sortedEmployees}
+                    for:item="employee">
+
+                    <div
+                        key={employee.id}
+                        class="slds-box slds-m-top_small">
+
+                        <p>
+                            <strong>Name:</strong>
+                            {employee.name}
+                        </p>
+
+                        <p>
+                            <strong>Department:</strong>
+                            {employee.department}
+                        </p>
+
+                    </div>
+                </template>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

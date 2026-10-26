@@ -1,41 +1,146 @@
+
 <template>
     <div class="cine-match">
+
+        <!-- Top Navigation -->
+        <header class="site-header">
+            <div class="brand">
+                <span class="brand-icon">🎬</span>
+                <span class="brand-name">CINEMATCH</span>
+            </div>
+
+            <p class="header-tagline">
+                Your next favorite starts here.
+            </p>
+        </header>
 
         <!-- Hero Banner -->
         <section
             class="hero-banner"
-            style={heroStyle}>
-
+            style={heroStyle}
+        >
             <div class="hero-content">
 
-                <p class="hero-label">CINEMATCH</p>
-
-                <h1>Find Your Next Favorite</h1>
-
-                <p class="hero-description">
-                    Discover movies and series based on your mood,
-                    interests and taste.
+                <p class="hero-label">
+                    YOUR PERSONAL MOVIE GUIDE
                 </p>
 
-                <button
-                    class="explore-button"
-                    onclick={handleExplore}>
-                    🎬 Find My Movies
-                </button>
+                <h1>
+                    Every mood has
+                    <span class="hero-highlight">
+                        a movie.
+                    </span>
+                </h1>
+
+                <p class="hero-description">
+                    Not sure what to watch tonight?
+                    Discover movies that match your mood,
+                    explore popular picks, and find your
+                    next favorite story.
+                </p>
+
+                <div class="hero-actions">
+                    <button
+                        class="primary-button"
+                        onclick={handleExplore}
+                    >
+                        Find My Movies
+                        <span>→</span>
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        onclick={handleTrending}
+                    >
+                        Explore Trending
+                    </button>
+                </div>
+
+                <div class="hero-features">
+                    <span>✦ Mood-based picks</span>
+                    <span>✦ Movie ratings</span>
+                    <span>✦ Your favorites</span>
+                </div>
 
             </div>
 
+            <div class="hero-bottom-fade"></div>
         </section>
 
-        <c-trending-movies></c-trending-movies>
+        <!-- Trending Movies -->
+        <section class="content-section trending-section">
+            <div class="section-intro">
+                <p class="section-eyebrow">
+                    WHAT'S POPULAR
+                </p>
 
-        <c-mood-categories
-    onmoodselect={handleMoodSelect}>
-</c-mood-categories>
+                <h2>Trending on CineMatch</h2>
 
-<c-movie-results
-    selected-mood={selectedMood}>
-</c-movie-results>
+                <p class="section-description">
+                    Discover movies worth adding to your watchlist.
+                </p>
+            </div>
+
+            <c-trending-movies></c-trending-movies>
+        </section>
+
+        <!-- Mood Selection -->
+        <section class="content-section mood-section">
+            <div class="section-intro">
+                <p class="section-eyebrow">
+                    YOUR MOOD, YOUR MOVIE
+                </p>
+
+                <h2>What are you in the mood for?</h2>
+
+                <p class="section-description">
+                    Choose how you feel, and let's find
+                    something you'll love.
+                </p>
+            </div>
+
+            <c-mood-categories
+                onmoodselect={handleMoodSelect}
+            >
+            </c-mood-categories>
+        </section>
+
+        <!-- Movie Recommendations -->
+        <section class="content-section results-section">
+            <div class="section-intro">
+                <p class="section-eyebrow">
+                    PICKED FOR YOU
+                </p>
+
+                <h2>Find your next favorite</h2>
+
+                <p class="section-description">
+                    Search, filter, explore, and save movies
+                    for your next movie night.
+                </p>
+            </div>
+
+            <c-movie-results
+                selected-mood={selectedMood}
+            >
+            </c-movie-results>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-brand">
+                🎬 CINEMATCH
+            </div>
+
+            <p>
+                Made for movie lovers.
+                Find your story, one movie at a time.
+            </p>
+
+            <p class="footer-note">
+                Movie information and availability may vary.
+            </p>
+        </footer>
 
     </div>
 </template>

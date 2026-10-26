@@ -1,0 +1,23 @@
+
+<template>
+    <lightning-card title={title} icon-name="standard:lightning_component">
+        <div class="slds-p-around_medium">
+            <template lwc:if={showMessage}>
+                <p class="welcome-message">
+                    Welcome to LWC Builder!
+                </p>
+                <p>This component is configurable using Lightning App Builder.</p>
+            </template>
+
+            <template lwc:else>
+                <p>The welcome message is currently hidden.</p>
+            </template>
+
+            <template lwc:if={recordId}>
+                <p class="slds-m-top_small">
+                    Record ID: {recordId}
+                </p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

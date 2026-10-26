@@ -1,41 +1,81 @@
+
 <template>
-
-    <section class="mood-section">
-
-        <p class="section-label">EXPLORE BY MOOD</p>
-
-        <h2>What are you in the mood for?</h2>
+    <div class="mood-container">
 
         <div class="mood-grid">
 
-            <template for:each={moods} for:item="mood">
+            <button
+                class={feelGoodClass}
+                data-mood="Feel Good"
+                onclick={handleMoodClick}
+                aria-pressed={isFeelGoodSelected}
+            >
+                <span class="mood-emoji">😊</span>
+                <span class="mood-name">Feel Good</span>
+                <span class="mood-description">
+                    Feel happier and inspired
+                </span>
+                <span class="mood-arrow">Explore movies →</span>
+            </button>
 
-                <button
-                    key={mood.id}
-                    class="mood-button"
-                    data-mood={mood.name}
-                    onclick={handleMood}>
+            <button
+                class={emotionalClass}
+                data-mood="Emotional"
+                onclick={handleMoodClick}
+                aria-pressed={isEmotionalSelected}
+            >
+                <span class="mood-emoji">🥹</span>
+                <span class="mood-name">Emotional</span>
+                <span class="mood-description">
+                    Stories that touch your heart
+                </span>
+                <span class="mood-arrow">Explore movies →</span>
+            </button>
 
-                    <span class="mood-emoji">
-                        {mood.emoji}
-                    </span>
+            <button
+                class={thrillerClass}
+                data-mood="Thriller"
+                onclick={handleMoodClick}
+                aria-pressed={isThrillerSelected}
+            >
+                <span class="mood-emoji">😱</span>
+                <span class="mood-name">Thriller</span>
+                <span class="mood-description">
+                    Mystery, suspense and twists
+                </span>
+                <span class="mood-arrow">Explore movies →</span>
+            </button>
 
-                    <span>
-                        {mood.name}
-                    </span>
-
-                </button>
-
-            </template>
+            <button
+                class={actionClass}
+                data-mood="Action"
+                onclick={handleMoodClick}
+                aria-pressed={isActionSelected}
+            >
+                <span class="mood-emoji">⚡</span>
+                <span class="mood-name">Action</span>
+                <span class="mood-description">
+                    Adventure and adrenaline
+                </span>
+                <span class="mood-arrow">Explore movies →</span>
+            </button>
 
         </div>
 
-        <button
-            class="clear-button"
-            onclick={handleClear}>
-            Clear Selection
-        </button>
+        <template lwc:if={selectedMood}>
+            <div class="selection-message">
+                <span>✓</span>
+                Showing recommendations for
+                <strong>{selectedMood}</strong>
+                <button
+                    class="clear-button"
+                    onclick={handleClearMood}
+                    title="Clear selected mood"
+                >
+                    Clear
+                </button>
+            </div>
+        </template>
 
-    </section>
-
+    </div>
 </template>

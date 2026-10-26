@@ -1,97 +1,272 @@
+
 <template>
-
     <section class="results-section">
-
         <p class="section-label">YOUR PICKS</p>
-
         <h2>Recommended For You</h2>
+        <p class="results-subtitle">
+            Discover movies that match your interests.
+        </p>
 
-        <template if:true={hasRecommendations}>
+        <!-- Loading indicator -->
+        <template if:true={isLoading}>
+            <lightning-spinner
+                alternative-text="Loading movies"
+                size="medium">
+            </lightning-spinner>
+        </template>
 
-            <div class="results-grid">
+        <!-- Error message -->
+        <template if:true={errorMessage}>
+            <div class="error-message" role="alert">
+                <p>{errorMessage}</p>
+                <lightning-button
+                    label="Retry"
+                    variant="brand"
+                    onclick={handleRetry}>
+                </lightning-button>
+            </div>
+        </template>
 
+        <!-- Smart Pick -->
+        <section class="smart-pick-section">
+            <h3>Not sure what to watch?</h3>
+            <p>
+                Let CineMatch choose a movie for you using its rating
+                and popularity.
+            </p>
+
+            <lightning-button
+                label="Find My Smart Pick"
+                variant="brand"
+                onclick={handleSmartPick}
+                disabled={isLoading}>
+            </lightning-button>
+
+            <template if:true={smartPickMessage}>
+                <p class="smart-pick-message">
+                    {smartPickMessage}
+                </p>
+            </template>
+
+            <template if:true={hasSmartPick}>
+                <div class="smart-pick-card">
+                    <img
+                        src={smartPickMovie.posterUrl}
+                        alt={smartPickMovie.title}
+                        class="smart-pick-poster">
+
+                    <div class="smart-pick-info">
+                        <h4>{smartPickMovie.title}</h4>
+
+                        <p>
+                            Rating: {smartPickMovie.rating}
+                        </p>
+
+                        <p>
+                            Genre: {smartPickMovie.genre}
+                        </p>
+
+                        <lightning-button
+                            label="View Details"
+                            variant="neutral"
+                            data-id={smartPickMovie.id}
+                            onclick={handleViewDetails}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </template>
+        </section>
+
+        <!-- Search, filter, and sort -->
+        <div class="movie-controls">
+            <lightning-input
+                type="search"
+                label="Search Movies"
+                placeholder="Enter a movie title..."
+                value={searchTerm}
+                onchange={handleSearch}>
+            </lightning-input>
+
+            <lightning-combobox
+                label="Filter by Genre"
+                value={selectedGenre}
+                options={genreOptions}
+                onchange={handleGenreChange}>
+            </lightning-combobox>
+
+            <lightning-combobox
+                label="Sort Movies"
+                value={selectedSort}
+                options={sortOptions}
+                onchange={handleSortChange}>
+            </lightning-combobox>
+
+            <lightning-input
+                type="checkbox"
+                label="Show Favorites Only"
+                checked={showFavoritesOnly}
+                onchange={handleFavoritesOnlyChange}>
+            </lightning-input>
+
+            <lightning-button
+                label="Clear Filters"
+                variant="neutral"
+                onclick={handleClearFilters}>
+            </lightning-button>
+        </div>
+
+        <!-- Movie count -->
+        <p class="result-count">
+            {movieCountMessage}
+        </p>
+
+        <!-- Selected movie details -->
+        <template if:true={hasSelectedMovie}>
+            <section class="movie-details">
+                <lightning-button
+                    label="Close Details"
+                    variant="neutral"
+                    onclick={handleCloseDetails}>
+                </lightning-button>
+
+                <h3>{selectedMovie.title}</h3>
+
+                <img
+                    src={selectedMovie.posterUrl}
+                    alt={selectedMovie.title}
+                    class="details-poster">
+
+                <p>
+                    <strong>Release Year:</strong>
+                    {selectedMovie.year}
+                </p>
+
+                <p>
+                    <strong>Rating:</strong>
+                    {selectedMovie.rating}
+                </p>
+
+                <p>
+                    <strong>Genre:</strong>
+                    {selectedMovie.genre}
+                </p>
+
+                <p>
+                    <strong>Overview:</strong>
+                    {selectedMovie.overview}
+                </p>
+
+                <p>
+                    <strong>Streaming availability:</strong>
+                    Not checked yet.
+                </p>
+
+                <a
+                    href={selectedMovie.tmdbUrl}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    View on TMDB
+                </a>
+            </section>
+        </template>
+
+        <!-- Movie cards -->
+        <template if:true={hasMovies}>
+            <div class="movie-grid">
                 <template
                     for:each={recommendedMovies}
                     for:item="movie">
 
-                    <div
-                        class="result-card"
-                        key={movie.id}>
+                    <article
+                        key={movie.id}
+                        class="movie-card">
 
-                        <div class="result-poster">
+                        <img
+                            src={movie.posterUrl}
+                            alt={movie.title}
+                            class="movie-poster">
 
-                            <img
-                                src={movie.image}
-                                alt={movie.title}
-                            />
-
-                        </div>
-
-                        <div class="result-info">
-
+                        <div class="movie-card-content">
                             <h3>{movie.title}</h3>
 
-                            <p>
-                                {movie.year} • ★ {movie.rating}
+                            <p class="movie-year">
+                                Year: {movie.year}
                             </p>
 
-                            <p class="ott-info">
-                                📺 {movie.ott}
+                            <p class="movie-rating">
+                                Rating: {movie.rating}
                             </p>
 
-                            <button
-                                class="details-button"
+                            <p class="movie-genre">
+                                Genre: {movie.genre}
+                            </p>
+
+                            <lightning-button
+                                label="View Details"
+                                variant="brand"
                                 data-id={movie.id}
                                 onclick={handleViewDetails}>
-                                View Details
-                            </button>
+                            </lightning-button>
 
+                            <lightning-button
+                                label={movie.favoriteLabel}
+                                variant="neutral"
+                                data-id={movie.id}
+                                onclick={handleToggleFavorite}>
+                            </lightning-button>
+
+                            <a
+                                href={movie.tmdbUrl}
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                View on TMDB
+                            </a>
                         </div>
-
-                    </div>
-
+                    </article>
                 </template>
-
             </div>
-
         </template>
 
-        <template if:false={hasRecommendations}>
-
-            <p class="empty-message">
-                Choose a mood above to discover movies made for you.
-            </p>
-
-        </template>
-
-
-
-        <template if:true={selectedMovie}>
-
-            <div class="movie-details">
-
-                <h2>{selectedMovie.title}</h2>
-
-                <p class="description">
-                    {selectedMovie.description}
-                </p>
-
+        <!-- Empty results -->
+        <template if:false={hasMovies}>
+            <div class="empty-state">
+                <h3>No matching movies found</h3>
                 <p>
-                    {selectedMovie.year} • {selectedMovie.genre}
+                    Try another search, select a different genre,
+                    or turn off Show Favorites Only.
                 </p>
 
-                <p>
-                    ⭐ {selectedMovie.rating}
-                </p>
-
-                <p>
-                    📺 {selectedMovie.ott}
-                </p>
-
+                <lightning-button
+                    label="Clear Filters"
+                    variant="brand"
+                    onclick={handleClearFilters}>
+                </lightning-button>
             </div>
-
         </template>
 
+        <!-- Load more error -->
+        <template if:true={loadMoreError}>
+            <div class="error-message" role="alert">
+                <p>{loadMoreError}</p>
+
+                <lightning-button
+                    label="Retry Loading Movies"
+                    variant="brand"
+                    onclick={handleRetryLoadMore}>
+                </lightning-button>
+            </div>
+        </template>
+
+        <!-- Pagination -->
+        <template if:true={hasMoreMovies}>
+            <div class="load-more-section">
+                <lightning-button
+                    label={loadMoreLabel}
+                    variant="brand"
+                    onclick={handleLoadMore}
+                    disabled={isLoading}>
+                </lightning-button>
+            </div>
+        </template>
     </section>
-
 </template>

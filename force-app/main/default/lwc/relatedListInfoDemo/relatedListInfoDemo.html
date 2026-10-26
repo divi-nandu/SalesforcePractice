@@ -1,0 +1,23 @@
+
+<template>
+    <lightning-card title="Related List Info Demo">
+        <div class="slds-m-around_medium">
+            <template lwc:if={listName}>
+                <p><strong>Related List:</strong> {listName}</p>
+                <p><strong>Object:</strong> {objectName}</p>
+
+                <h3 class="slds-m-top_medium">
+                    Available Columns
+                </h3>
+
+                <template for:each={columns} for:item="column">
+                    <p key={column.key}>{column.label}</p>
+                </template>
+            </template>
+
+            <template lwc:if={errorMessage}>
+                <p>{errorMessage}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

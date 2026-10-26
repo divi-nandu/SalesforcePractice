@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Related Lists Info Demo">
+        <div class="slds-m-around_medium">
+            <h2 class="slds-text-heading_medium">
+                Account Related Lists
+            </h2>
+
+            <template lwc:if={relatedLists.length}>
+                <template for:each={relatedLists} for:item="item">
+                    <div key={item.id} class="slds-box slds-m-top_small">
+                        <p><strong>{item.label}</strong></p>
+                        <p>Related List ID: {item.id}</p>
+                    </div>
+                </template>
+            </template>
+
+            <template lwc:if={errorMessage}>
+                <p>{errorMessage}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

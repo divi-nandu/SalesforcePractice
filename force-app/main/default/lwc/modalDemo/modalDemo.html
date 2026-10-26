@@ -1,0 +1,49 @@
+
+<template>
+    <lightning-card title="Reusable Modal Demo">
+        <div class="slds-p-around_medium">
+
+            <p>{message}</p>
+
+            <lightning-button
+                label="Open Modal"
+                variant="brand"
+                onclick={handleOpen}
+            ></lightning-button>
+
+            <template lwc:if={isModalOpen}>
+                <c-reusable-modal onclose={handleClose}>
+
+                    <span slot="header">
+                        Employee Details
+                    </span>
+
+                    <p>
+                        This is a reusable modal component.
+                    </p>
+
+                    <p class="slds-m-top_small">
+                        You can place text, forms, or other
+                        components inside this popup.
+                    </p>
+
+                    <div slot="footer">
+                        <lightning-button
+                            label="Cancel"
+                            onclick={handleClose}
+                        ></lightning-button>
+
+                        <lightning-button
+                            class="slds-m-left_small"
+                            label="Confirm"
+                            variant="brand"
+                            onclick={handleConfirm}
+                        ></lightning-button>
+                    </div>
+
+                </c-reusable-modal>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

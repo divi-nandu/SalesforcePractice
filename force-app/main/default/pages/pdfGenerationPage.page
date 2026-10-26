@@ -1,0 +1,27 @@
+
+<apex:page renderAs="pdf"
+           showHeader="false"
+           sidebar="false"
+           applyHtmlTag="false"
+           applyBodyTag="false">
+    <html>
+        <head>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    padding: 20px;
+                }
+
+                h1 {
+                    color: #1b5297;
+                    text-align: center;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Salesforce PDF Demo</h1>
+            <p>Hello! This PDF was generated using Salesforce.</p>
+            <p>This is my PDF Generation in LWC practice.</p>
+        </body>
+    </html>
+</apex:page>

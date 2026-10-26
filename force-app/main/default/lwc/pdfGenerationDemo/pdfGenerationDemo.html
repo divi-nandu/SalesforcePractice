@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="PDF Generation Demo">
+        <div class="slds-p-around_medium">
+
+            <p class="slds-m-bottom_medium">
+                Generate a PDF and save it to a Contact record.
+            </p>
+
+            <lightning-input
+                label="Contact Record ID"
+                value={contactId}
+                onchange={handleContactIdChange}
+                placeholder="Enter Contact ID">
+            </lightning-input>
+
+            <div class="slds-m-top_medium">
+                <lightning-button
+                    label="Generate and Save PDF"
+                    variant="brand"
+                    onclick={handleGeneratePDF}
+                    disabled={isLoading}>
+                </lightning-button>
+            </div>
+
+            <template lwc:if={isLoading}>
+                <lightning-spinner
+                    alternative-text="Generating PDF"
+                    size="small">
+                </lightning-spinner>
+            </template>
+
+            <template lwc:if={message}>
+                <p class="slds-m-top_medium">{message}</p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

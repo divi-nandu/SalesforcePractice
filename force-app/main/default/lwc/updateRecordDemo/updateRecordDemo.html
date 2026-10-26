@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Update Contact Records" icon-name="standard:contact">
+        <div class="slds-p-around_medium">
+
+            <template lwc:if={errorMessage}>
+                <div class="slds-text-color_error slds-m-bottom_small">
+                    {errorMessage}
+                </div>
+            </template>
+
+            <lightning-datatable
+                key-field="Id"
+                data={contacts}
+                columns={columns}
+                draft-values={draftValues}
+                onsave={handleSave}
+                hide-checkbox-column>
+            </lightning-datatable>
+
+        </div>
+    </lightning-card>
+</template>

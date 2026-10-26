@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Related List Records Demo">
+        <div class="slds-m-around_medium">
+
+            <template lwc:if={recordId}>
+                <p>Account Record ID: {recordId}</p>
+            </template>
+
+            <template lwc:if={contacts.length}>
+                <h2 class="slds-text-heading_small slds-m-top_medium">
+                    Related Contacts
+                </h2>
+
+                <template for:each={contacts} for:item="contact">
+                    <div
+                        key={contact.id}
+                        class="slds-box slds-m-top_small"
+                    >
+                        <p><strong>Name:</strong> {contact.name}</p>
+                        <p><strong>Email:</strong> {contact.email}</p>
+                    </div>
+                </template>
+            </template>
+
+            <template lwc:if={errorMessage}>
+                <p>{errorMessage}</p>
+            </template>
+
+            <template lwc:if={recordId}>
+                <template lwc:if={contacts.length}>
+                </template>
+                <template lwc:else>
+                    <template lwc:if={errorMessage}>
+                    </template>
+                    <template lwc:else>
+                        <p>Loading or checking related Contacts...</p>
+                    </template>
+                </template>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

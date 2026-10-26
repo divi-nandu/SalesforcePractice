@@ -1,65 +1,178 @@
-.mood-section {
-    padding: 50px 60px;
-    background: #111116;
-    color: white;
+
+:host {
+    display: block;
+    width: 100%;
 }
 
-.section-label {
-    font-size: 12px;
-    letter-spacing: 3px;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-h2 {
-    font-size: 30px;
-    margin: 0 0 25px;
+.mood-container {
+    width: 100%;
 }
 
 .mood-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 18px;
 }
 
-.mood-button {
-    padding: 20px;
-    border: 1px solid #333;
+.mood-card {
+    display: flex;
+    min-width: 0;
+    min-height: 205px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px 18px;
+    border: 1px solid #303039;
     border-radius: 12px;
-    background: #1a1a21;
-    color: white;
+    background: linear-gradient(
+        145deg,
+        #1a1a22,
+        #131319
+    );
+    color: #ffffff;
+    text-align: left;
     cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.mood-button:hover {
+.mood-card:hover {
     transform: translateY(-4px);
-    border-color: white;
+    border-color: #b18b3c;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.mood-card:focus-visible,
+.clear-button:focus-visible {
+    outline: 2px solid #f5c451;
+    outline-offset: 4px;
+}
+
+.mood-card.selected {
+    border-color: #f5c451;
+    background: linear-gradient(
+        145deg,
+        #302819,
+        #19171a
+    );
+    box-shadow: 0 0 0 1px #f5c451;
 }
 
 .mood-emoji {
-    font-size: 28px;
-    display: block;
-    margin-bottom: 8px;
+    display: flex;
+    width: 49px;
+    height: 49px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 19px;
+    border: 1px solid #38333a;
+    border-radius: 12px;
+    background: #24232b;
+    font-size: 26px;
 }
 
-.mood-button.selected {
-    border-color: white;
-    transform: translateY(-4px);
-    background: #2a2a32;
+.mood-name {
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 750;
+}
+
+.mood-description {
+    min-height: 36px;
+    color: #a9a9b5;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.mood-arrow {
+    margin-top: auto;
+    padding-top: 18px;
+    color: #f5c451;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.selection-message {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 22px;
+    padding: 14px 16px;
+    border: 1px solid #3b3426;
+    border-radius: 8px;
+    background: #191710;
+    color: #c5c2ba;
+    font-size: 13px;
+}
+
+.selection-message > span {
+    color: #f5c451;
+    font-weight: 800;
+}
+
+.selection-message strong {
+    color: #f5c451;
 }
 
 .clear-button {
-    margin-top: 20px;
-    padding: 9px 16px;
-    border: 1px solid #444;
-    border-radius: 6px;
+    margin-left: auto;
+    padding: 6px 10px;
+    border: 1px solid #49413a;
+    border-radius: 5px;
     background: transparent;
-    color: white;
+    color: #ffffff;
+    font-size: 12px;
     cursor: pointer;
 }
 
 .clear-button:hover {
-    background: #222;
+    border-color: #f5c451;
+    color: #f5c451;
+}
+
+@media (max-width: 900px) {
+    .mood-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mood-grid {
+        gap: 10px;
+    }
+
+    .mood-card {
+        min-height: 190px;
+        padding: 16px 12px;
+    }
+
+    .mood-emoji {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 14px;
+        font-size: 23px;
+    }
+
+    .mood-name {
+        font-size: 15px;
+    }
+
+    .mood-description {
+        font-size: 11px;
+    }
+
+    .selection-message {
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mood-card {
+        transition: none;
+    }
 }

@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Lightning Confirm Demo">
+        <div class="slds-m-around_medium">
+            <p>Click below to test a confirmation popup.</p>
+
+            <lightning-button
+                label="Confirm Action"
+                variant="brand"
+                onclick={confirmAction}>
+            </lightning-button>
+
+            <template lwc:if={resultMessage}>
+                <p class="slds-m-top_medium">{resultMessage}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

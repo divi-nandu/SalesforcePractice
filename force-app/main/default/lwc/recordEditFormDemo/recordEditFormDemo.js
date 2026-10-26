@@ -1,8 +1,11 @@
+
 import { LightningElement } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
 import CONTACT_OBJECT from '@salesforce/schema/Contact';
 import ACCOUNT_FIELD from '@salesforce/schema/Contact.AccountId';
-import NAME_FIELD from '@salesforce/schema/Contact.Name';
+import FIRST_NAME_FIELD from '@salesforce/schema/Contact.FirstName';
+import LAST_NAME_FIELD from '@salesforce/schema/Contact.LastName';
 import TITLE_FIELD from '@salesforce/schema/Contact.Title';
 import PHONE_FIELD from '@salesforce/schema/Contact.Phone';
 import EMAIL_FIELD from '@salesforce/schema/Contact.Email';
@@ -12,19 +15,21 @@ export default class RecordEditFormDemo extends LightningElement {
 
     fields = {
         account: ACCOUNT_FIELD,
-        name: NAME_FIELD,
+        firstName: FIRST_NAME_FIELD,
+        lastName: LAST_NAME_FIELD,
         title: TITLE_FIELD,
         phone: PHONE_FIELD,
         email: EMAIL_FIELD
     };
 
     handleSuccess(event) {
-        this.dispatchEvent(new ShowToastEvent({
-            title: 'Success',
-            message: 'Contact created: ' + event.detail.id,
-            variant: 'success'
-        }));
-        this.handleReset();
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: 'Success',
+                message: 'Contact updated: ' + event.detail.id,
+                variant: 'success'
+            })
+        );
     }
 
     handleError(event) {
@@ -32,7 +37,11 @@ export default class RecordEditFormDemo extends LightningElement {
     }
 
     handleReset() {
-        this.template.querySelectorAll('lightning-input-field').forEach(field => {
+        const inputFields = this.template.querySelectorAll(
+            'lightning-input-field'
+        );
+
+        inputFields.forEach(field => {
             field.reset();
         });
     }

@@ -1,0 +1,45 @@
+<template>
+    <lightning-card
+        title="Imperative Apex with Parameters"
+        icon-name="standard:account">
+
+        <div class="slds-var-p-around_medium">
+            <lightning-input
+                label="Search Account Name"
+                value={searchKey}
+                onchange={handleChange}>
+            </lightning-input>
+
+            <lightning-button
+                class="slds-var-m-top_small"
+                label="Search"
+                variant="brand"
+                onclick={handleSearch}>
+            </lightning-button>
+
+            <template if:true={hasSearched}>
+                <template if:true={accounts.length}>
+                    <template for:each={accounts} for:item="acc">
+                        <p key={acc.Id} class="slds-var-m-top_small">
+                            {acc.Name} - {acc.Industry}
+                        </p>
+                    </template>
+                </template>
+
+                <template if:false={accounts.length}>
+                    <template if:false={errorMessage}>
+                        <p class="slds-var-m-top_small">
+                            No matching Accounts found.
+                        </p>
+                    </template>
+                </template>
+            </template>
+
+            <template if:true={errorMessage}>
+                <p class="slds-text-color_error slds-var-m-top_small">
+                    {errorMessage}
+                </p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

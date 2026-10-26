@@ -1,55 +1,77 @@
+
 <template>
+    <div class="trending-container">
 
-    <section class="trending-section">
-
-        <div class="section-header">
-
-            <div>
-                <p class="section-label">TRENDING NOW</p>
-                <h2>Popular Picks</h2>
-            </div>
-
-            <p class="section-description">
-                Stories worth watching right now.
-            </p>
-
+        <div class="trending-heading">
+            <h3>Popular Picks</h3>
+            <span class="trending-badge">MOVIE NIGHT FAVORITES</span>
         </div>
 
         <div class="movie-grid">
-
-            <template for:each={movies} for:item="movie">
-
-                <div class="movie-card" key={movie.id}>
-
-                    <div class="movie-poster">
-
-                        <img
-                            src={movie.image}
-                            alt={movie.title}
-                        />
-
-                        <span class="rating">
-                            ★ {movie.rating}
-                        </span>
-
-                    </div>
-
-                    <div class="movie-info">
-
-                        <h3>{movie.title}</h3>
-
-                        <p>
-                            {movie.year} • {movie.genre}
-                        </p>
-
-                    </div>
-
+            <article class="movie-card">
+                <div class="poster-wrap">
+                    <img
+                        src={pursuitImage}
+                        alt="The Pursuit of Happyness poster"
+                        class="movie-poster"
+                    />
+                    <span class="poster-tag">INSPIRING</span>
                 </div>
+                <div class="movie-info">
+                    <h4>The Pursuit of Happyness</h4>
+                    <p class="movie-meta">2006 · Drama</p>
+                    <p class="movie-rating">★ <span>8.0</span><span class="rating-label"> / 10</span></p>
+                </div>
+            </article>
 
-            </template>
+            <article class="movie-card">
+                <div class="poster-wrap">
+                    <img
+                        src={goodwillImage}
+                        alt="Good Will Hunting poster"
+                        class="movie-poster"
+                    />
+                    <span class="poster-tag">FEEL GOOD</span>
+                </div>
+                <div class="movie-info">
+                    <h4>Good Will Hunting</h4>
+                    <p class="movie-meta">1997 · Drama</p>
+                    <p class="movie-rating">★ <span>8.3</span><span class="rating-label"> / 10</span></p>
+                </div>
+            </article>
 
+            <article class="movie-card">
+                <div class="poster-wrap">
+                    <img
+                        src={fightClubImage}
+                        alt="Fight Club poster"
+                        class="movie-poster"
+                    />
+                    <span class="poster-tag">THRILLER</span>
+                </div>
+                <div class="movie-info">
+                    <h4>Fight Club</h4>
+                    <p class="movie-meta">1999 · Thriller</p>
+                    <p class="movie-rating">★ <span>8.8</span><span class="rating-label"> / 10</span></p>
+                </div>
+            </article>
+
+            <article class="movie-card">
+                <div class="poster-wrap">
+                    <img
+                        src={spidermanImage}
+                        alt="Spider-Man poster"
+                        class="movie-poster"
+                    />
+                    <span class="poster-tag">ACTION</span>
+                </div>
+                <div class="movie-info">
+                    <h4>Spider-Man</h4>
+                    <p class="movie-meta">2002 · Action</p>
+                    <p class="movie-rating">★ <span>7.4</span><span class="rating-label"> / 10</span></p>
+                </div>
+            </article>
         </div>
 
-    </section>
-
+    </div>
 </template>

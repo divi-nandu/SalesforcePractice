@@ -1,0 +1,56 @@
+
+<template>
+    <lightning-card title="Pagination Demo">
+        <div class="slds-p-around_medium">
+
+            <p class="slds-m-bottom_medium">
+                Page {currentPage} of {totalPages}
+            </p>
+
+            <template
+                for:each={paginatedEmployees}
+                for:item="employee">
+
+                <div
+                    key={employee.id}
+                    class="slds-box slds-m-bottom_small">
+
+                    <p>
+                        <strong>Name:</strong> {employee.name}
+                    </p>
+
+                    <p>
+                        <strong>Department:</strong>
+                        {employee.department}
+                    </p>
+                </div>
+            </template>
+
+            <div class="slds-grid slds-grid_align-center
+                        slds-gutters_small slds-m-top_medium">
+
+                <div class="slds-col">
+                    <lightning-button
+                        label="Previous"
+                        onclick={handlePrevious}
+                        disabled={isFirstPage}>
+                    </lightning-button>
+                </div>
+
+                <div class="slds-col">
+                    <lightning-button
+                        label="Next"
+                        onclick={handleNext}
+                        disabled={isLastPage}>
+                    </lightning-button>
+                </div>
+
+            </div>
+
+            <p class="slds-text-align_center slds-m-top_medium">
+                Total Employees: {employees.length}
+            </p>
+
+        </div>
+    </lightning-card>
+</template>

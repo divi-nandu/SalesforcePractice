@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Related List Count Demo">
+        <div class="slds-m-around_medium">
+            <p>Account Record ID: {recordId}</p>
+
+            <template lwc:if={recordId}>
+                <p>Record ID received. Checking Contact count...</p>
+            </template>
+
+            <template lwc:else>
+                <p>No Account Record ID received.</p>
+                <p>Please open this component on an Account Record Page.</p>
+            </template>
+
+            <template lwc:if={errorMessage}>
+                <p>Error: {errorMessage}</p>
+            </template>
+
+            <template lwc:if={contactCount}>
+                <p>Related Contacts: {contactCount}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
